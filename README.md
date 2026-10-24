@@ -1,7 +1,8 @@
 # TellexApp — Landing page
 
 Site do **TellexApp**, o sistema de gestão para lojas de celular e assistências técnicas.
-Feito com React + Vite + TypeScript + Tailwind CSS e publicado automaticamente no GitHub Pages.
+Visual escuro e cinematográfico (preto, creme, textura de ruído, título gigante e textos que surgem com a rolagem), com o conteúdo e as imagens do TellexApp.
+Feito com React + Vite + TypeScript + Tailwind CSS + framer-motion e publicado automaticamente no GitHub Pages.
 
 Endereço: **https://breno018.github.io/site/**
 
@@ -12,18 +13,20 @@ Endereço: **https://breno018.github.io/site/**
 | O que mudar | Arquivo |
 |---|---|
 | WhatsApp, e-mail, site, link do sistema, Instagram e YouTube | `src/config.ts` |
-| Cores da marca | `tailwind.config.js` (bloco `colors`) |
-| Topo da página (título, texto, botões) | `src/sections/Hero.tsx` |
-| Faixa azul de benefícios | `src/sections/Benefits.tsx` |
+| Cores (creme, fundos dos cartões) | `tailwind.config.js` (bloco `colors`) |
+| Topo: menu, título "TellexApp", texto e botão | `src/sections/Hero.tsx` |
+| Faixa de benefícios | `src/sections/Benefits.tsx` |
+| Texto "Mais controle, mais resultados" | `src/sections/About.tsx` |
 | Os 5 problemas | `src/sections/Problems.tsx` |
-| Módulos / funcionalidades | `src/sections/Features.tsx` |
+| Cartões principais (IMEI, Assistência 8P, Caixa) | `src/sections/Features.tsx` |
+| Os 8 módulos | `src/sections/Modules.tsx` |
 | Passo a passo | `src/sections/HowItWorks.tsx` |
 | IMEI, Checklist 8P, PDV, Financeiro e Multi-loja | `src/sections/Highlights.tsx` |
-| Seção "Sobre" | `src/sections/About.tsx` |
+| "Sua loja na palma da mão" | `src/sections/Mobile.tsx` |
 | Resultados (-90% / 100%) | `src/sections/Results.tsx` |
 | Planos e preços | `src/sections/Plans.tsx` |
 | Perguntas frequentes | `src/sections/Faq.tsx` |
-| Banner final e contato | `src/sections/FinalCta.tsx` e `src/sections/Contact.tsx` |
+| Chamada final e contato | `src/sections/FinalCta.tsx` |
 | Imagens (logo, painel, foto) | `public/img/` |
 
 ### Colocar o WhatsApp (pelo iPhone)

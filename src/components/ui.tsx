@@ -1,7 +1,11 @@
 import { motion } from 'framer-motion'
-import { Check } from 'lucide-react'
+import { ArrowRight, Check } from 'lucide-react'
 import type { ReactNode } from 'react'
 import { img } from '../config'
+import WordsPullUpMultiStyle, { type Segment } from './WordsPullUpMultiStyle'
+
+export const EASE_OUT = [0.16, 1, 0.3, 1] as const
+export const EASE_CARD = [0.22, 1, 0.36, 1] as const
 
 /** Entrada suave (sobe e aparece) quando o elemento entra na tela. */
 export function Reveal({
@@ -19,70 +23,106 @@ export function Reveal({
   return (
     <Tag
       className={className}
-      initial={{ opacity: 0, y: 24 }}
+      initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-60px' }}
-      transition={{ duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.8, delay, ease: EASE_OUT }}
     >
       {children}
     </Tag>
   )
 }
 
-export function Logo({ light = false, size = 'md' }: { light?: boolean; size?: 'md' | 'lg' }) {
-  const box = size === 'lg' ? 'h-11 w-11' : 'h-9 w-9 sm:h-10 sm:w-10'
-  const text = size === 'lg' ? 'text-2xl' : 'text-xl sm:text-2xl'
+/** Cartão que entra com leve zoom (0.95 → 1), como os cartões da seção Features. */
+export function CardIn({ children, index = 0, className = '', as = 'div' }: { children: ReactNode; index?: number; className?: string; as?: 'div' | 'li' }) {
+  const Tag = as === 'li' ? motion.li : motion.div
+  return (
+    <Tag
+      className={className}
+      initial={{ opacity: 0, scale: 0.95 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      viewport={{ once: true, margin: '-100px' }}
+      transition={{ duration: 0.8, delay: index * 0.15, ease: EASE_CARD }}
+    >
+      {children}
+    </Tag>
+  )
+}
+
+export function Logo({ size = 'md' }: { size?: 'sm' | 'md' }) {
+  const box = size === 'sm' ? 'h-7 w-7 rounded-lg' : 'h-9 w-9 rounded-xl'
+  const text = size === 'sm' ? 'text-base' : 'text-xl'
   return (
     <span className="inline-flex items-center gap-2.5">
-      <img src={img('logo.png')} alt="" width={40} height={40} className={`${box} rounded-xl`} />
-      <span className={`${text} font-extrabold tracking-tight ${light ? 'text-white' : 'text-ink'}`}>
-        Tellex<span className={light ? 'text-[#8EA6FF]' : 'text-brand'}>App</span>
+      <img src={img('logo.png')} alt="" width={36} height={36} className={box} />
+      <span className={`${text} font-bold tracking-tight`} style={{ color: '#E1E0CC' }}>
+        Tellex<span className="text-primary/60">App</span>
       </span>
     </span>
   )
 }
 
-export function SectionHeading({
-  chip,
-  title,
-  text,
-  center = false,
+/** Cabeçalho de seção: rótulo pequeno + título com palavras subindo (estilo Prisma). */
+export function SectionIntro({
+  label,
+  lines,
+  className = '',
 }: {
-  chip: string
-  title: ReactNode
-  text?: ReactNode
-  center?: boolean
+  label?: string
+  lines: Segment[][]
+  className?: string
 }) {
   return (
-    <div className={center ? 'mx-auto max-w-2xl text-center' : 'max-w-2xl'}>
-      <span className="chip">{chip}</span>
-      <h2 className="mt-4 text-3xl font-extrabold leading-[1.1] tracking-tight sm:text-4xl lg:text-[2.75rem]">{title}</h2>
-      {text && <p className="mt-4 text-base leading-relaxed text-muted sm:text-lg">{text}</p>}
+    <div className={`text-center ${className}`}>
+      {label && <p className="label mb-6">{label}</p>}
+      <h2 className="flex flex-col items-center">
+        {lines.map((segments, i) => (
+          <WordsPullUpMultiStyle
+            key={i}
+            segments={segments}
+            className="text-2xl font-normal leading-[1.1] sm:text-3xl md:text-4xl lg:text-5xl"
+            style={{ color: i === 0 ? '#E1E0CC' : undefined }}
+          />
+        ))}
+      </h2>
     </div>
   )
 }
 
-export function CheckItem({ children, tone = 'brand' }: { children: ReactNode; tone?: 'brand' | 'green' }) {
-  const color = tone === 'green' ? 'bg-emerald-500' : 'bg-brand'
+export function CheckItem({ children }: { children: ReactNode }) {
   return (
-    <li className="flex items-start gap-3">
-      <span className={`mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full ${color}`}>
-        <Check className="h-3 w-3 text-white" strokeWidth={3} aria-hidden="true" />
-      </span>
-      <span>{children}</span>
+    <li className="flex items-start gap-2.5">
+      <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" aria-hidden="true" />
+      <span className="text-gray-400">{children}</span>
     </li>
+  )
+}
+
+/** Botão pílula creme com círculo preto e seta, no estilo "Join the lab". */
+export function PillCta({ href, children, external = false }: { href: string; children: ReactNode; external?: boolean }) {
+  return (
+    <a
+      href={href}
+      className="pill-cta group"
+      {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+    >
+      {children}
+      <span className="pill-cta-circle">
+        <ArrowRight className="h-4 w-4 text-primary" aria-hidden="true" />
+      </span>
+    </a>
   )
 }
 
 /** Moldura de "tela do sistema" usada nos exemplos ilustrativos. */
 export function ScreenFrame({ title, children }: { title: string; children: ReactNode }) {
   return (
-    <figure className="card overflow-hidden">
-      <figcaption className="flex items-center gap-2 border-b border-line bg-surface px-4 py-3 text-xs font-semibold text-muted">
+    <figure className="overflow-hidden rounded-2xl border border-white/10 bg-panel">
+      <figcaption className="flex items-center gap-2 border-b border-white/10 px-4 py-3 text-xs text-gray-400">
         <span className="flex gap-1.5" aria-hidden="true">
-          <span className="h-2.5 w-2.5 rounded-full bg-red-400" />
-          <span className="h-2.5 w-2.5 rounded-full bg-amber-400" />
-          <span className="h-2.5 w-2.5 rounded-full bg-emerald-400" />
+          <span className="h-2.5 w-2.5 rounded-full bg-white/15" />
+          <span className="h-2.5 w-2.5 rounded-full bg-white/15" />
+          <span className="h-2.5 w-2.5 rounded-full bg-white/15" />
         </span>
         <span className="truncate">{title}</span>
       </figcaption>

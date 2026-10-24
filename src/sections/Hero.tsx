@@ -1,81 +1,106 @@
 import { motion } from 'framer-motion'
-import { ArrowRight, PlayCircle, ShieldCheck } from 'lucide-react'
-import { img } from '../config'
+import WordsPullUp from '../components/WordsPullUp'
+import { EASE_OUT, Logo, PillCta } from '../components/ui'
+import { img, systemLink } from '../config'
 
-const EASE = [0.22, 1, 0.36, 1] as const
+export const NAV = [
+  { label: 'Início', href: '#inicio' },
+  { label: 'Funcionalidades', href: '#funcionalidades' },
+  { label: 'Planos', href: '#planos' },
+  { label: 'Sobre', href: '#sobre' },
+  { label: 'Dúvidas', href: '#duvidas' },
+]
 
-const fade = (delay: number) => ({
-  initial: { opacity: 0, y: 24 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.7, delay, ease: EASE },
-})
+const LINK = 'rgba(225, 224, 204, 0.8)'
+const LINK_HOVER = '#E1E0CC'
 
 export default function Hero() {
   return (
-    <section
-      id="inicio"
-      className="relative overflow-hidden bg-gradient-to-b from-[#F3F6FF] to-white pb-16 pt-[calc(110px+env(safe-area-inset-top))] sm:pb-24 lg:pt-36"
-    >
-      <div className="container-x grid items-center gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-10">
-        <div>
-          <motion.p {...fade(0)} className="inline-flex items-center gap-2 rounded-full bg-brand-soft px-3.5 py-1.5 text-sm font-semibold text-brand">
-            <ShieldCheck className="h-4 w-4" aria-hidden="true" />
-            Sistema para vendas e assistência técnica
-          </motion.p>
+    <section id="inicio" className="h-[100svh] min-h-[560px] p-4 md:p-6">
+      <div className="relative h-full w-full overflow-hidden rounded-2xl bg-card md:rounded-[2rem]">
+        {/* Fundo: painel real do TellexApp, escurecido e com leve aproximação */}
+        <motion.img
+          src={img('dashboard.webp')}
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-0 h-full w-full object-cover object-[70%_30%] opacity-50 blur-[3px] grayscale-[40%]"
+          initial={{ scale: 1.12 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 8, ease: EASE_OUT }}
+        />
+        <div className="pointer-events-none absolute inset-0 bg-black/50" />
+        <div className="noise-overlay pointer-events-none absolute inset-0 opacity-[0.7] mix-blend-overlay" />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/80" />
 
-          <motion.h1
-            {...fade(0.08)}
-            className="mt-6 text-[2.6rem] font-extrabold leading-[1.02] tracking-tight sm:text-6xl lg:text-[4.1rem]"
-          >
-            Mais controle, mais resultados <span className="text-brand">para sua loja.</span>
-          </motion.h1>
+        <a href="#inicio" aria-label="TellexApp, início" className="absolute left-5 top-4 z-20 hidden lg:block">
+          <Logo size="sm" />
+        </a>
 
-          <motion.p {...fade(0.16)} className="mt-6 max-w-xl text-lg leading-relaxed text-muted">
-            O sistema de gestão feito para quem vende e conserta celulares. Estoque individual por IMEI, ordens de
-            serviço com vistoria na entrada e caixa organizado no fim do dia. Sem complicações.
-          </motion.p>
-
-          <motion.div {...fade(0.24)} className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <a href="#contato" className="btn-primary">
-              Comece agora <ArrowRight className="h-4 w-4" aria-hidden="true" />
-            </a>
-            <a href="#como-funciona" className="btn-outline">
-              <PlayCircle className="h-5 w-5 text-brand" aria-hidden="true" /> Ver demonstração
-            </a>
-          </motion.div>
-
-          <motion.ul {...fade(0.32)} className="mt-8 flex flex-wrap gap-x-6 gap-y-3 text-[15px] font-medium">
-            {['Simples e intuitivo', 'Completo e integrado', 'Feito para sua loja'].map((t) => (
-              <li key={t} className="flex items-center gap-2">
-                <span className="flex h-5 w-5 items-center justify-center rounded-full bg-brand text-white">
-                  <svg viewBox="0 0 12 12" className="h-3 w-3" aria-hidden="true">
-                    <path d="M2.5 6.2l2.2 2.2L9.5 3.8" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </span>
-                {t}
+        <nav
+          aria-label="Navegação principal"
+          className="absolute left-1/2 top-0 z-20 -translate-x-1/2 rounded-b-2xl bg-black px-4 py-2 md:rounded-b-3xl md:px-8"
+        >
+          <ul className="flex items-center gap-3 whitespace-nowrap text-[10px] sm:gap-6 sm:text-xs md:gap-12 md:text-sm lg:gap-14">
+            {NAV.map((item) => (
+              <li key={item.href}>
+                <a
+                  href={item.href}
+                  className="inline-flex min-h-[28px] items-center transition-colors duration-200"
+                  style={{ color: LINK }}
+                  onMouseEnter={(e) => (e.currentTarget.style.color = LINK_HOVER)}
+                  onMouseLeave={(e) => (e.currentTarget.style.color = LINK)}
+                >
+                  {item.label}
+                </a>
               </li>
             ))}
-          </motion.ul>
-        </div>
+          </ul>
+        </nav>
 
-        <motion.div
-          initial={{ opacity: 0, y: 30, scale: 0.98 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 0.9, delay: 0.2, ease: EASE }}
-          className="relative"
+        <a
+          href={systemLink()}
+          className="absolute right-5 top-4 z-20 hidden text-sm transition-colors lg:block"
+          style={{ color: LINK }}
+          onMouseEnter={(e) => (e.currentTarget.style.color = LINK_HOVER)}
+          onMouseLeave={(e) => (e.currentTarget.style.color = LINK)}
         >
-          <div
-            className="absolute -right-24 -top-16 h-[120%] w-[90%] rounded-[45%_55%_40%_60%] bg-brand-gradient opacity-[0.14] blur-2xl"
-            aria-hidden="true"
-          />
-          <img
-            src={img('dashboard.webp')}
-            alt="Painel do TellexApp com resumo de vendas, faturamento, lucro líquido e atalhos para nova venda e novo conserto"
-            width={976}
-            height={780}
-            className="relative w-full rounded-2xl border border-line shadow-[0_40px_80px_-30px_rgba(31,69,224,.35)]"
-          />
-        </motion.div>
+          Entrar no sistema ↗
+        </a>
+
+        <div className="absolute bottom-0 left-0 right-0 z-10 grid grid-cols-12 items-end gap-4 px-4 pb-5 sm:px-6 sm:pb-6 md:px-8 md:pb-8">
+          <div className="col-span-12 lg:col-span-8">
+            <h1 className="sr-only">TellexApp — sistema de gestão para lojas de celular e assistências técnicas</h1>
+            <div aria-hidden="true">
+              <WordsPullUp
+                text="TellexApp"
+                showAsterisk
+                className="pr-[0.2em] text-[18vw] font-medium leading-[0.85] tracking-[-0.07em] sm:text-[17vw] lg:text-[12.5vw] 2xl:text-[12vw]"
+                style={{ color: '#E1E0CC' }}
+              />
+            </div>
+          </div>
+
+          <div className="col-span-12 flex flex-col items-start gap-5 pb-1 lg:col-span-4 lg:pb-[1.5vw]">
+            <motion.p
+              className="max-w-md text-xs text-primary/70 sm:text-sm md:text-base"
+              style={{ lineHeight: 1.2 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.5, ease: EASE_OUT }}
+            >
+              O sistema de gestão feito para quem vende e conserta celulares. Estoque individual por IMEI, ordens de
+              serviço com vistoria na entrada e caixa organizado no fim do dia. Sem complicações.
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.7, ease: EASE_OUT }}
+            >
+              <PillCta href="#contato">Comece agora</PillCta>
+            </motion.div>
+          </div>
+        </div>
       </div>
     </section>
   )
