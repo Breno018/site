@@ -1,4 +1,5 @@
 import { Reveal, SectionIntro } from '../components/ui'
+import { COLORS } from '../theme'
 
 const STEPS = [
   {
@@ -29,24 +30,24 @@ const STEPS = [
 
 export default function HowItWorks() {
   return (
-    <section id="como-funciona" aria-label="Como funciona" className="bg-black px-4 py-20 sm:px-6 md:py-28">
+    <section id="como-funciona" aria-label="Como funciona" className="bg-ink px-4 py-20 sm:px-6 md:py-28">
       <div className="mx-auto max-w-6xl rounded-2xl bg-card px-6 py-16 sm:px-10 md:rounded-[2rem] md:py-24">
         <SectionIntro
           label="Simplicidade de uso"
           lines={[
             [{ text: 'Como o TellexApp funciona' }],
-            [{ text: 'na rotina da loja.', className: 'italic font-serif text-primary/60' }],
+            [{ text: 'na rotina da loja.', className: 'italic font-serif text-brand-soft' }],
           ]}
         />
 
         <ol className="mt-14 grid gap-x-10 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
           {STEPS.map((s, i) => (
-            <Reveal as="li" key={s.title} delay={(i % 3) * 0.08} className="border-t border-white/10 pt-6">
-              <span className="font-serif text-4xl italic text-primary/50">{String(i + 1).padStart(2, '0')}</span>
-              <h3 className="mt-4 text-lg" style={{ color: '#E1E0CC' }}>
+            <Reveal as="li" key={s.title} delay={(i % 3) * 0.08} className="border-t border-primary/10 pt-6">
+              <span className="font-serif text-4xl italic text-brand-soft/70">{String(i + 1).padStart(2, '0')}</span>
+              <h3 className="mt-4 text-lg" style={{ color: COLORS.title }}>
                 {s.title}
               </h3>
-              <p className="mt-2 text-sm leading-relaxed text-gray-400">{s.text}</p>
+              <p className="mt-2 text-sm leading-relaxed text-mist">{s.text}</p>
             </Reveal>
           ))}
         </ol>

@@ -2,6 +2,7 @@ import { ArrowRight, Check, ShoppingCart, Smartphone, Wrench, type LucideIcon } 
 import WordsPullUpMultiStyle from '../components/WordsPullUpMultiStyle'
 import { CardIn } from '../components/ui'
 import { img } from '../config'
+import { COLORS } from '../theme'
 
 type Feature = {
   number: string
@@ -50,18 +51,18 @@ const FEATURES: Feature[] = [
 
 export default function Features() {
   return (
-    <section id="funcionalidades" className="relative min-h-screen overflow-hidden bg-black px-4 py-20 sm:px-6 md:py-28">
+    <section id="funcionalidades" className="relative min-h-screen overflow-hidden bg-ink px-4 py-20 sm:px-6 md:py-28">
       <div className="bg-noise pointer-events-none absolute inset-0 opacity-[0.15]" />
 
       <div className="relative mx-auto max-w-7xl">
         <h2 className="mb-12 flex flex-col items-center text-center md:mb-16">
           <WordsPullUpMultiStyle
             className="text-xl font-normal sm:text-2xl md:text-3xl lg:text-4xl"
-            style={{ color: '#E1E0CC' }}
+            style={{ color: COLORS.title }}
             segments={[{ text: 'Tudo o que sua loja precisa em um só lugar.' }]}
           />
           <WordsPullUpMultiStyle
-            className="text-xl font-normal text-gray-500 sm:text-2xl md:text-3xl lg:text-4xl"
+            className="text-xl font-normal text-dim sm:text-2xl md:text-3xl lg:text-4xl"
             segments={[{ text: 'Do balcão ao financeiro. Feito para sua loja.' }]}
           />
         </h2>
@@ -75,8 +76,8 @@ export default function Features() {
               className="absolute inset-0 h-full w-full object-cover object-left-top brightness-[0.8]"
             />
             <div className="noise-overlay pointer-events-none absolute inset-0 opacity-40 mix-blend-overlay" />
-            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
-            <p className="relative p-6 text-lg sm:text-xl" style={{ color: '#E1E0CC' }}>
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/30 to-transparent" />
+            <p className="relative p-6 text-lg sm:text-xl" style={{ color: COLORS.title }}>
               Sua loja inteira em um painel.
             </p>
           </CardIn>
@@ -89,14 +90,14 @@ export default function Features() {
                   <Icon className="h-5 w-5 text-primary sm:h-6 sm:w-6" aria-hidden="true" />
                 </span>
 
-                <h3 className="mt-8 flex items-baseline justify-between gap-3 text-lg sm:text-xl" style={{ color: '#E1E0CC' }}>
+                <h3 className="mt-8 flex items-baseline justify-between gap-3 text-lg sm:text-xl" style={{ color: COLORS.title }}>
                   {feature.title}
-                  <span className="text-xs text-gray-500 sm:text-sm">{feature.number}</span>
+                  <span className="text-xs text-dim sm:text-sm">{feature.number}</span>
                 </h3>
 
                 <ul className="mt-6 space-y-3">
                   {feature.items.map((item) => (
-                    <li key={item} className="flex items-start gap-2.5 text-sm text-gray-400">
+                    <li key={item} className="flex items-start gap-2.5 text-sm text-mist">
                       <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" aria-hidden="true" />
                       <span>{item}</span>
                     </li>

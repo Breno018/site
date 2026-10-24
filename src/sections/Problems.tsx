@@ -1,4 +1,5 @@
 import { Reveal, SectionIntro } from '../components/ui'
+import { COLORS } from '../theme'
 
 const PROBLEMS = [
   {
@@ -29,23 +30,23 @@ export default function Problems() {
       <SectionIntro
         label="Desafios do setor"
         lines={[
-          [{ text: 'Sua loja enfrenta algum' }, { text: 'desses 5 problemas?', className: 'italic font-serif' }],
+          [{ text: 'Sua loja enfrenta algum' }, { text: 'desses 5 problemas?', className: 'italic font-serif text-brand-soft' }],
         ]}
       />
 
-      <ol className="mx-auto mt-12 max-w-4xl border-t border-white/10 md:mt-16">
+      <ol className="mx-auto mt-12 max-w-4xl border-t border-primary/10 md:mt-16">
         {PROBLEMS.map((p, i) => (
           <Reveal
             as="li"
             key={p.title}
             delay={i * 0.05}
-            className="grid gap-2 border-b border-white/10 py-6 sm:grid-cols-[4rem_1fr_1.3fr] sm:items-baseline sm:gap-6"
+            className="grid gap-2 border-b border-primary/10 py-6 sm:grid-cols-[4rem_1fr_1.3fr] sm:items-baseline sm:gap-6"
           >
-            <span className="font-serif text-3xl italic text-primary/50">0{i + 1}</span>
-            <h3 className="text-lg" style={{ color: '#E1E0CC' }}>
+            <span className="font-serif text-3xl italic text-brand-soft/70">0{i + 1}</span>
+            <h3 className="text-lg" style={{ color: COLORS.title }}>
               {p.title}
             </h3>
-            <p className="text-sm text-gray-400 sm:text-base">{p.text}</p>
+            <p className="text-sm text-mist sm:text-base">{p.text}</p>
           </Reveal>
         ))}
       </ol>

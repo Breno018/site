@@ -1,31 +1,32 @@
 import type { ReactNode } from 'react'
 import { CheckItem, Reveal, ScreenFrame } from '../components/ui'
+import { COLORS } from '../theme'
 
 /* Telas de exemplo reproduzidas da apresentação comercial (dados fictícios de demonstração). */
 
 function ImeiScreen() {
   return (
     <ScreenFrame title="Consulta rápida de IMEI — exemplo de tela">
-      <div className="flex flex-wrap items-start justify-between gap-3 border-b border-white/10 pb-4">
+      <div className="flex flex-wrap items-start justify-between gap-3 border-b border-primary/10 pb-4">
         <div>
           <p className="font-bold">iPhone 13 128GB - Estelar (Seminovo)</p>
-          <p className="mt-1 text-xs text-gray-400">
+          <p className="mt-1 text-xs text-mist">
             IMEI: <span className="font-mono font-semibold text-cream">358742109854123</span>
           </p>
         </div>
-        <span className="rounded-md bg-emerald-400/10 px-2 py-1 text-xs text-emerald-300">Disponível no Estoque</span>
+        <span className="rounded-md bg-ok/10 px-2 py-1 text-xs text-ok">Disponível no Estoque</span>
       </div>
       <dl className="grid grid-cols-3 gap-3 pt-4 text-sm">
         <div>
-          <dt className="text-xs text-gray-400">Preço de Custo</dt>
+          <dt className="text-xs text-mist">Preço de Custo</dt>
           <dd className="font-bold">R$ 2.800,00</dd>
         </div>
         <div>
-          <dt className="text-xs text-gray-400">Preço de Venda</dt>
+          <dt className="text-xs text-mist">Preço de Venda</dt>
           <dd className="font-bold text-primary">R$ 3.590,00</dd>
         </div>
         <div>
-          <dt className="text-xs text-gray-400">Loja Física</dt>
+          <dt className="text-xs text-mist">Loja Física</dt>
           <dd className="font-bold">Matriz - Centro</dd>
         </div>
       </dl>
@@ -49,9 +50,9 @@ function ChecklistScreen() {
     <ScreenFrame title="Checklist de vistoria da OS — exemplo de tela">
       <ul className="grid grid-cols-2 gap-2.5 sm:grid-cols-4">
         {CHECKLIST.map(([item, ok]) => (
-          <li key={item} className="rounded-xl border border-white/10 bg-black/40 p-3 text-xs">
-            <span className="block text-gray-400">{item}</span>
-            <span className={`mt-1 block text-sm font-bold ${ok ? 'text-emerald-400' : 'text-red-400'}`}>
+          <li key={item} className="rounded-xl border border-primary/10 bg-ink/40 p-3 text-xs">
+            <span className="block text-mist">{item}</span>
+            <span className={`mt-1 block text-sm font-bold ${ok ? 'text-ok' : 'text-bad'}`}>
               {ok ? 'OK' : 'Com Defeito'}
             </span>
           </li>
@@ -65,21 +66,21 @@ function PdvScreen() {
   return (
     <ScreenFrame title="Resumo de venda no PDV — exemplo de tela">
       <p className="font-bold">Pedido #1042 — Cliente: Carlos Eduardo</p>
-      <div className="mt-3 overflow-hidden rounded-xl border border-white/10 text-sm">
-        <div className="grid grid-cols-[1fr_auto] gap-3 bg-black/40 px-3 py-2 text-xs text-gray-500">
+      <div className="mt-3 overflow-hidden rounded-xl border border-primary/10 text-sm">
+        <div className="grid grid-cols-[1fr_auto] gap-3 bg-ink/40 px-3 py-2 text-xs text-dim">
           <span>Item</span>
           <span>Valor</span>
         </div>
-        <div className="grid grid-cols-[1fr_auto] gap-3 border-t border-white/10 px-3 py-2.5">
+        <div className="grid grid-cols-[1fr_auto] gap-3 border-t border-primary/10 px-3 py-2.5">
           <span>Samsung Galaxy S23 Ultra 256GB</span>
           <span className="font-semibold">R$ 4.200,00</span>
         </div>
-        <div className="grid grid-cols-[1fr_auto] gap-3 border-t border-white/10 px-3 py-2.5">
+        <div className="grid grid-cols-[1fr_auto] gap-3 border-t border-primary/10 px-3 py-2.5">
           <span>Capa de Proteção Anti-Impacto</span>
           <span className="font-semibold">R$ 80,00</span>
         </div>
       </div>
-      <p className="mt-3 rounded-xl bg-black/40 px-3 py-2.5 text-gray-400 text-xs leading-relaxed">
+      <p className="mt-3 rounded-xl bg-ink/40 px-3 py-2.5 text-mist text-xs leading-relaxed">
         <strong>Pagamento realizado:</strong> R$ 1.280,00 no PIX + R$ 3.000,00 em 10x no cartão de crédito.
       </p>
     </ScreenFrame>
@@ -90,20 +91,20 @@ function FinanceScreen() {
   return (
     <ScreenFrame title="Resultado do mês — exemplo de tela">
       <dl className="grid gap-3 sm:grid-cols-3">
-        <div className="rounded-xl border border-white/10 bg-black/40 p-4">
-          <dt className="text-xs text-gray-400">Faturamento do Mês</dt>
+        <div className="rounded-xl border border-primary/10 bg-ink/40 p-4">
+          <dt className="text-xs text-mist">Faturamento do Mês</dt>
           <dd className="mt-1 text-xl font-bold">R$ 84.500,00</dd>
-          <dd className="text-xs font-medium text-emerald-400">Vendas + Assistência</dd>
+          <dd className="text-xs font-medium text-ok">Vendas + Assistência</dd>
         </div>
-        <div className="rounded-xl border border-white/10 bg-black/40 p-4">
-          <dt className="text-xs text-gray-400">Custo de Mercadorias (CMV)</dt>
-          <dd className="mt-1 text-xl font-bold text-gray-400">R$ 56.200,00</dd>
-          <dd className="text-xs text-gray-400">Aparelhos e Peças</dd>
+        <div className="rounded-xl border border-primary/10 bg-ink/40 p-4">
+          <dt className="text-xs text-mist">Custo de Mercadorias (CMV)</dt>
+          <dd className="mt-1 text-xl font-bold text-mist">R$ 56.200,00</dd>
+          <dd className="text-xs text-mist">Aparelhos e Peças</dd>
         </div>
-        <div className="rounded-xl border border-emerald-400/40 bg-emerald-400/10 p-4">
-          <dt className="text-xs text-emerald-300">Lucro Líquido Apurado</dt>
-          <dd className="mt-1 text-xl font-bold text-emerald-300">R$ 18.300,00</dd>
-          <dd className="text-xs text-emerald-300">Resultado real do período</dd>
+        <div className="rounded-xl border border-ok/40 bg-ok/10 p-4">
+          <dt className="text-xs text-ok">Lucro Líquido Apurado</dt>
+          <dd className="mt-1 text-xl font-bold text-ok">R$ 18.300,00</dd>
+          <dd className="text-xs text-ok">Resultado real do período</dd>
         </div>
       </dl>
     </ScreenFrame>
@@ -116,17 +117,17 @@ function StoresScreen() {
       <ul className="grid gap-3 sm:grid-cols-3">
         <li className="rounded-xl border border-primary/60 bg-primary/10 p-4">
           <p className="font-bold text-primary">Loja 01 — Matriz Centro</p>
-          <p className="mt-1 text-xs text-gray-400">Estoque: 86 Aparelhos</p>
-          <p className="mt-1 text-xs font-semibold text-emerald-400">● Loja selecionada</p>
+          <p className="mt-1 text-xs text-mist">Estoque: 86 Aparelhos</p>
+          <p className="mt-1 text-xs font-semibold text-ok">● Loja selecionada</p>
         </li>
-        <li className="rounded-xl border border-white/10 bg-black/40 p-4">
+        <li className="rounded-xl border border-primary/10 bg-ink/40 p-4">
           <p className="font-bold">Loja 02 — Shopping</p>
-          <p className="mt-1 text-xs text-gray-400">Estoque: 56 Aparelhos</p>
-          <p className="mt-1 text-xs text-gray-400">Clique para alternar</p>
+          <p className="mt-1 text-xs text-mist">Estoque: 56 Aparelhos</p>
+          <p className="mt-1 text-xs text-mist">Clique para alternar</p>
         </li>
-        <li className="rounded-xl border border-white/10 bg-black/40 p-4">
+        <li className="rounded-xl border border-primary/10 bg-ink/40 p-4">
           <p className="font-bold">Visão Consolidada</p>
-          <p className="mt-1 text-xs text-gray-400">Todas as 2 unidades</p>
+          <p className="mt-1 text-xs text-mist">Todas as 2 unidades</p>
           <p className="mt-1 text-xs font-semibold text-primary">Relatório Geral</p>
         </li>
       </ul>
@@ -226,7 +227,7 @@ const BLOCKS: Block[] = [
 
 export default function Highlights() {
   return (
-    <section aria-label="Destaques do sistema" className="relative overflow-hidden bg-black py-20 md:py-28">
+    <section aria-label="Destaques do sistema" className="relative overflow-hidden bg-ink py-20 md:py-28">
       <div className="bg-noise pointer-events-none absolute inset-0 opacity-[0.15]" />
       <div className="container-x relative space-y-20 sm:space-y-28">
         {BLOCKS.map((b, i) => (
@@ -239,7 +240,7 @@ export default function Highlights() {
             <Reveal className={i % 2 === 1 ? 'lg:order-2' : ''}>
               <p className="label">{b.chip}</p>
               <h2 id={`${b.id}-titulo`} className="mt-5 text-3xl font-normal leading-[1] sm:text-4xl lg:text-5xl"
-                style={{ color: '#E1E0CC' }}>
+                style={{ color: COLORS.title }}>
                 {b.title}
               </h2>
               <p className="mt-4 font-serif text-xl italic text-primary/70 sm:text-2xl">{b.text}</p>

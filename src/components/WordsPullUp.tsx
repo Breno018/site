@@ -35,7 +35,7 @@ export default function WordsPullUp({ text, className = '', style, showAsterisk 
                 {word.slice(0, -1)}
                 <span className="relative inline-block">
                   {word.slice(-1)}
-                  <span className="absolute top-[0.65em] -right-[0.3em] text-[0.31em] leading-none">*</span>
+                  <span className="absolute top-[0.65em] -right-[0.3em] text-[0.31em] leading-none text-brand-soft">*</span>
                 </span>
               </>
             ) : (

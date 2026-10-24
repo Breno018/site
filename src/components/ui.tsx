@@ -3,6 +3,7 @@ import { ArrowRight, Check } from 'lucide-react'
 import type { ReactNode } from 'react'
 import { img } from '../config'
 import WordsPullUpMultiStyle, { type Segment } from './WordsPullUpMultiStyle'
+import { COLORS } from '../theme'
 
 export const EASE_OUT = [0.16, 1, 0.3, 1] as const
 export const EASE_CARD = [0.22, 1, 0.36, 1] as const
@@ -55,8 +56,8 @@ export function Logo({ size = 'md' }: { size?: 'sm' | 'md' }) {
   return (
     <span className="inline-flex items-center gap-2.5">
       <img src={img('logo.png')} alt="" width={36} height={36} className={box} />
-      <span className={`${text} font-bold tracking-tight`} style={{ color: '#E1E0CC' }}>
-        Tellex<span className="text-primary/60">App</span>
+      <span className={`${text} font-bold tracking-tight`} style={{ color: COLORS.title }}>
+        Tellex<span className="text-brand-soft">App</span>
       </span>
     </span>
   )
@@ -81,7 +82,7 @@ export function SectionIntro({
             key={i}
             segments={segments}
             className="text-2xl font-normal leading-[1.1] sm:text-3xl md:text-4xl lg:text-5xl"
-            style={{ color: i === 0 ? '#E1E0CC' : undefined }}
+            style={{ color: i === 0 ? COLORS.title : undefined }}
           />
         ))}
       </h2>
@@ -93,7 +94,7 @@ export function CheckItem({ children }: { children: ReactNode }) {
   return (
     <li className="flex items-start gap-2.5">
       <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" aria-hidden="true" />
-      <span className="text-gray-400">{children}</span>
+      <span className="text-mist">{children}</span>
     </li>
   )
 }
@@ -108,7 +109,7 @@ export function PillCta({ href, children, external = false }: { href: string; ch
     >
       {children}
       <span className="pill-cta-circle">
-        <ArrowRight className="h-4 w-4 text-primary" aria-hidden="true" />
+        <ArrowRight className="h-4 w-4 text-white" aria-hidden="true" />
       </span>
     </a>
   )
@@ -117,12 +118,12 @@ export function PillCta({ href, children, external = false }: { href: string; ch
 /** Moldura de "tela do sistema" usada nos exemplos ilustrativos. */
 export function ScreenFrame({ title, children }: { title: string; children: ReactNode }) {
   return (
-    <figure className="overflow-hidden rounded-2xl border border-white/10 bg-panel">
-      <figcaption className="flex items-center gap-2 border-b border-white/10 px-4 py-3 text-xs text-gray-400">
+    <figure className="overflow-hidden rounded-2xl border border-primary/10 bg-panel">
+      <figcaption className="flex items-center gap-2 border-b border-primary/10 px-4 py-3 text-xs text-mist">
         <span className="flex gap-1.5" aria-hidden="true">
-          <span className="h-2.5 w-2.5 rounded-full bg-white/15" />
-          <span className="h-2.5 w-2.5 rounded-full bg-white/15" />
-          <span className="h-2.5 w-2.5 rounded-full bg-white/15" />
+          <span className="h-2.5 w-2.5 rounded-full bg-primary/15" />
+          <span className="h-2.5 w-2.5 rounded-full bg-primary/15" />
+          <span className="h-2.5 w-2.5 rounded-full bg-primary/15" />
         </span>
         <span className="truncate">{title}</span>
       </figcaption>

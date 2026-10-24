@@ -17,7 +17,7 @@ import Footer from './sections/Footer'
 export default function App() {
   return (
     <MotionConfig reducedMotion="user">
-      <main className="bg-black">
+      <main className="bg-ink">
         <Hero />
         <Benefits />
         <About />

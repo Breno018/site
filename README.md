@@ -1,7 +1,7 @@
 # TellexApp — Landing page
 
 Site do **TellexApp**, o sistema de gestão para lojas de celular e assistências técnicas.
-Visual escuro e cinematográfico (preto, creme, textura de ruído, título gigante e textos que surgem com a rolagem), com o conteúdo e as imagens do TellexApp.
+Visual escuro e cinematográfico (textura de ruído, título gigante e textos que surgem com a rolagem), com a paleta azul/violeta tirada das artes do TellexApp.
 Feito com React + Vite + TypeScript + Tailwind CSS + framer-motion e publicado automaticamente no GitHub Pages.
 
 Endereço: **https://breno018.github.io/site/**
@@ -13,7 +13,7 @@ Endereço: **https://breno018.github.io/site/**
 | O que mudar | Arquivo |
 |---|---|
 | WhatsApp, e-mail, site, link do sistema, Instagram e YouTube | `src/config.ts` |
-| Cores (creme, fundos dos cartões) | `tailwind.config.js` (bloco `colors`) |
+| Cores do site | `tailwind.config.js` (bloco `colors`) e `src/theme.ts` |
 | Topo: menu, título "TellexApp", texto e botão | `src/sections/Hero.tsx` |
 | Faixa de benefícios | `src/sections/Benefits.tsx` |
 | Texto "Mais controle, mais resultados" | `src/sections/About.tsx` |
@@ -28,6 +28,21 @@ Endereço: **https://breno018.github.io/site/**
 | Perguntas frequentes | `src/sections/Faq.tsx` |
 | Chamada final e contato | `src/sections/FinalCta.tsx` |
 | Imagens (logo, painel, foto) | `public/img/` |
+
+### Paleta de cores
+
+Tirada do logo, do painel e dos banners do TellexApp:
+
+| Uso | Cor |
+|---|---|
+| Fundo da página | `#05060F` (preto azulado) |
+| Cartões | `#0B0D1C` e `#141836` (marinho) |
+| Texto principal | `#E9EBF8` (branco frio) |
+| Destaques claros e ícones | `#C9D1FF` (lavanda) |
+| Itálicos de destaque | `#8FA8FF` (azul claro) |
+| Botões e plano em destaque | gradiente `#015BFE` → `#5D30E9` (azul do logo → violeta dos banners) |
+| Textos secundários | `#9AA3C7` e `#8189B0` |
+| Status OK / defeito | `#34D399` / `#F87171` |
 
 ### Colocar o WhatsApp (pelo iPhone)
 1. Abra `src/config.ts` no GitHub e toque no lápis.

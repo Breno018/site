@@ -1,5 +1,6 @@
 import { BarChart3, DollarSign, Lock, ShoppingCart, Smartphone, Store, Users, Wrench } from 'lucide-react'
 import { CardIn, PillCta, SectionIntro } from '../components/ui'
+import { COLORS } from '../theme'
 
 const MODULES = [
   { icon: Smartphone, title: 'Estoque IMEI', text: 'Controle individual de novos e seminovos por número de série.' },
@@ -17,17 +18,17 @@ export default function Modules() {
     <section aria-label="Módulos" className="container-x py-20 md:py-28">
       <SectionIntro
         label="Visão dos módulos"
-        lines={[[{ text: 'Oito módulos,' }, { text: 'um só sistema.', className: 'italic font-serif' }]]}
+        lines={[[{ text: 'Oito módulos,' }, { text: 'um só sistema.', className: 'italic font-serif text-brand-soft' }]]}
       />
 
       <ul className="mt-12 grid gap-3 sm:grid-cols-2 sm:gap-2 md:mt-16 lg:grid-cols-4 lg:gap-1">
         {MODULES.map(({ icon: Icon, title, text }, i) => (
           <CardIn as="li" key={title} index={i % 4} className="rounded-2xl bg-card p-6 sm:p-7">
             <Icon className="h-6 w-6 text-primary" aria-hidden="true" />
-            <h3 className="mt-8 text-lg" style={{ color: '#E1E0CC' }}>
+            <h3 className="mt-8 text-lg" style={{ color: COLORS.title }}>
               {title}
             </h3>
-            <p className="mt-2 text-sm text-gray-400">{text}</p>
+            <p className="mt-2 text-sm text-mist">{text}</p>
           </CardIn>
         ))}
       </ul>

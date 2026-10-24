@@ -1,5 +1,6 @@
 import { Plus } from 'lucide-react'
 import { Reveal, SectionIntro } from '../components/ui'
+import { COLORS } from '../theme'
 
 const FAQ = [
   {
@@ -30,20 +31,20 @@ const FAQ = [
 
 export default function Faq() {
   return (
-    <section id="duvidas" aria-label="Dúvidas" className="bg-black px-4 py-20 sm:px-6 md:py-28">
+    <section id="duvidas" aria-label="Dúvidas" className="bg-ink px-4 py-20 sm:px-6 md:py-28">
       <div className="mx-auto max-w-6xl rounded-2xl bg-card px-6 py-16 sm:px-10 md:rounded-[2rem] md:py-24">
         <SectionIntro
           label="Dúvidas"
-          lines={[[{ text: 'Perguntas' }, { text: 'frequentes.', className: 'italic font-serif' }]]}
+          lines={[[{ text: 'Perguntas' }, { text: 'frequentes.', className: 'italic font-serif text-brand-soft' }]]}
         />
 
-        <div className="mx-auto mt-12 max-w-3xl border-t border-white/10">
+        <div className="mx-auto mt-12 max-w-3xl border-t border-primary/10">
           {FAQ.map((item, i) => (
             <Reveal key={item.q} delay={i * 0.04}>
-              <details className="group border-b border-white/10 [&_summary::-webkit-details-marker]:hidden">
+              <details className="group border-b border-primary/10 [&_summary::-webkit-details-marker]:hidden">
                 <summary
                   className="flex min-h-[64px] cursor-pointer list-none items-center justify-between gap-4 text-base sm:text-lg"
-                  style={{ color: '#E1E0CC' }}
+                  style={{ color: COLORS.title }}
                 >
                   {item.q}
                   <Plus
@@ -51,7 +52,7 @@ export default function Faq() {
                     aria-hidden="true"
                   />
                 </summary>
-                <p className="pb-6 text-sm leading-relaxed text-gray-400 sm:text-base">{item.a}</p>
+                <p className="pb-6 text-sm leading-relaxed text-mist sm:text-base">{item.a}</p>
               </details>
             </Reveal>
           ))}
