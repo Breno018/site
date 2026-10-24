@@ -6,26 +6,26 @@ import { CheckItem, Reveal, ScreenFrame } from '../components/ui'
 function ImeiScreen() {
   return (
     <ScreenFrame title="Consulta rápida de IMEI — exemplo de tela">
-      <div className="flex flex-wrap items-start justify-between gap-3 border-b border-line pb-4">
+      <div className="flex flex-wrap items-start justify-between gap-3 border-b border-white/10 pb-4">
         <div>
           <p className="font-bold">iPhone 13 128GB - Estelar (Seminovo)</p>
-          <p className="mt-1 text-xs text-muted">
-            IMEI: <span className="font-mono font-semibold text-ink">358742109854123</span>
+          <p className="mt-1 text-xs text-gray-400">
+            IMEI: <span className="font-mono font-semibold text-cream">358742109854123</span>
           </p>
         </div>
-        <span className="rounded-md bg-emerald-100 px-2 py-1 text-xs font-bold text-emerald-700">Disponível no Estoque</span>
+        <span className="rounded-md bg-emerald-400/10 px-2 py-1 text-xs text-emerald-300">Disponível no Estoque</span>
       </div>
       <dl className="grid grid-cols-3 gap-3 pt-4 text-sm">
         <div>
-          <dt className="text-xs text-muted">Preço de Custo</dt>
+          <dt className="text-xs text-gray-400">Preço de Custo</dt>
           <dd className="font-bold">R$ 2.800,00</dd>
         </div>
         <div>
-          <dt className="text-xs text-muted">Preço de Venda</dt>
-          <dd className="font-bold text-brand">R$ 3.590,00</dd>
+          <dt className="text-xs text-gray-400">Preço de Venda</dt>
+          <dd className="font-bold text-primary">R$ 3.590,00</dd>
         </div>
         <div>
-          <dt className="text-xs text-muted">Loja Física</dt>
+          <dt className="text-xs text-gray-400">Loja Física</dt>
           <dd className="font-bold">Matriz - Centro</dd>
         </div>
       </dl>
@@ -49,9 +49,9 @@ function ChecklistScreen() {
     <ScreenFrame title="Checklist de vistoria da OS — exemplo de tela">
       <ul className="grid grid-cols-2 gap-2.5 sm:grid-cols-4">
         {CHECKLIST.map(([item, ok]) => (
-          <li key={item} className="rounded-xl border border-line bg-surface p-3 text-xs">
-            <span className="block text-muted">{item}</span>
-            <span className={`mt-1 block text-sm font-extrabold ${ok ? 'text-emerald-600' : 'text-red-600'}`}>
+          <li key={item} className="rounded-xl border border-white/10 bg-black/40 p-3 text-xs">
+            <span className="block text-gray-400">{item}</span>
+            <span className={`mt-1 block text-sm font-bold ${ok ? 'text-emerald-400' : 'text-red-400'}`}>
               {ok ? 'OK' : 'Com Defeito'}
             </span>
           </li>
@@ -65,21 +65,21 @@ function PdvScreen() {
   return (
     <ScreenFrame title="Resumo de venda no PDV — exemplo de tela">
       <p className="font-bold">Pedido #1042 — Cliente: Carlos Eduardo</p>
-      <div className="mt-3 overflow-hidden rounded-xl border border-line text-sm">
-        <div className="grid grid-cols-[1fr_auto] gap-3 bg-surface px-3 py-2 text-xs font-semibold text-muted">
+      <div className="mt-3 overflow-hidden rounded-xl border border-white/10 text-sm">
+        <div className="grid grid-cols-[1fr_auto] gap-3 bg-black/40 px-3 py-2 text-xs text-gray-500">
           <span>Item</span>
           <span>Valor</span>
         </div>
-        <div className="grid grid-cols-[1fr_auto] gap-3 border-t border-line px-3 py-2.5">
+        <div className="grid grid-cols-[1fr_auto] gap-3 border-t border-white/10 px-3 py-2.5">
           <span>Samsung Galaxy S23 Ultra 256GB</span>
           <span className="font-semibold">R$ 4.200,00</span>
         </div>
-        <div className="grid grid-cols-[1fr_auto] gap-3 border-t border-line px-3 py-2.5">
+        <div className="grid grid-cols-[1fr_auto] gap-3 border-t border-white/10 px-3 py-2.5">
           <span>Capa de Proteção Anti-Impacto</span>
           <span className="font-semibold">R$ 80,00</span>
         </div>
       </div>
-      <p className="mt-3 rounded-xl bg-surface px-3 py-2.5 text-xs leading-relaxed">
+      <p className="mt-3 rounded-xl bg-black/40 px-3 py-2.5 text-gray-400 text-xs leading-relaxed">
         <strong>Pagamento realizado:</strong> R$ 1.280,00 no PIX + R$ 3.000,00 em 10x no cartão de crédito.
       </p>
     </ScreenFrame>
@@ -90,20 +90,20 @@ function FinanceScreen() {
   return (
     <ScreenFrame title="Resultado do mês — exemplo de tela">
       <dl className="grid gap-3 sm:grid-cols-3">
-        <div className="rounded-xl border border-line bg-surface p-4">
-          <dt className="text-xs text-muted">Faturamento do Mês</dt>
-          <dd className="mt-1 text-xl font-extrabold">R$ 84.500,00</dd>
-          <dd className="text-xs font-medium text-emerald-600">Vendas + Assistência</dd>
+        <div className="rounded-xl border border-white/10 bg-black/40 p-4">
+          <dt className="text-xs text-gray-400">Faturamento do Mês</dt>
+          <dd className="mt-1 text-xl font-bold">R$ 84.500,00</dd>
+          <dd className="text-xs font-medium text-emerald-400">Vendas + Assistência</dd>
         </div>
-        <div className="rounded-xl border border-line bg-surface p-4">
-          <dt className="text-xs text-muted">Custo de Mercadorias (CMV)</dt>
-          <dd className="mt-1 text-xl font-extrabold text-muted">R$ 56.200,00</dd>
-          <dd className="text-xs text-muted">Aparelhos e Peças</dd>
+        <div className="rounded-xl border border-white/10 bg-black/40 p-4">
+          <dt className="text-xs text-gray-400">Custo de Mercadorias (CMV)</dt>
+          <dd className="mt-1 text-xl font-bold text-gray-400">R$ 56.200,00</dd>
+          <dd className="text-xs text-gray-400">Aparelhos e Peças</dd>
         </div>
-        <div className="rounded-xl border border-emerald-300 bg-emerald-50 p-4">
-          <dt className="text-xs text-emerald-800">Lucro Líquido Apurado</dt>
-          <dd className="mt-1 text-xl font-extrabold text-emerald-700">R$ 18.300,00</dd>
-          <dd className="text-xs text-emerald-700">Resultado real do período</dd>
+        <div className="rounded-xl border border-emerald-400/40 bg-emerald-400/10 p-4">
+          <dt className="text-xs text-emerald-300">Lucro Líquido Apurado</dt>
+          <dd className="mt-1 text-xl font-bold text-emerald-300">R$ 18.300,00</dd>
+          <dd className="text-xs text-emerald-300">Resultado real do período</dd>
         </div>
       </dl>
     </ScreenFrame>
@@ -114,20 +114,20 @@ function StoresScreen() {
   return (
     <ScreenFrame title="Alternar loja ativa — exemplo de tela">
       <ul className="grid gap-3 sm:grid-cols-3">
-        <li className="rounded-xl border-2 border-brand bg-brand-soft p-4">
-          <p className="font-bold text-brand">Loja 01 — Matriz Centro</p>
-          <p className="mt-1 text-xs text-muted">Estoque: 86 Aparelhos</p>
-          <p className="mt-1 text-xs font-semibold text-emerald-600">● Loja selecionada</p>
+        <li className="rounded-xl border border-primary/60 bg-primary/10 p-4">
+          <p className="font-bold text-primary">Loja 01 — Matriz Centro</p>
+          <p className="mt-1 text-xs text-gray-400">Estoque: 86 Aparelhos</p>
+          <p className="mt-1 text-xs font-semibold text-emerald-400">● Loja selecionada</p>
         </li>
-        <li className="rounded-xl border border-line bg-surface p-4">
+        <li className="rounded-xl border border-white/10 bg-black/40 p-4">
           <p className="font-bold">Loja 02 — Shopping</p>
-          <p className="mt-1 text-xs text-muted">Estoque: 56 Aparelhos</p>
-          <p className="mt-1 text-xs text-muted">Clique para alternar</p>
+          <p className="mt-1 text-xs text-gray-400">Estoque: 56 Aparelhos</p>
+          <p className="mt-1 text-xs text-gray-400">Clique para alternar</p>
         </li>
-        <li className="rounded-xl border border-line bg-surface p-4">
+        <li className="rounded-xl border border-white/10 bg-black/40 p-4">
           <p className="font-bold">Visão Consolidada</p>
-          <p className="mt-1 text-xs text-muted">Todas as 2 unidades</p>
-          <p className="mt-1 text-xs font-semibold text-brand">Relatório Geral</p>
+          <p className="mt-1 text-xs text-gray-400">Todas as 2 unidades</p>
+          <p className="mt-1 text-xs font-semibold text-primary">Relatório Geral</p>
         </li>
       </ul>
     </ScreenFrame>
@@ -226,8 +226,9 @@ const BLOCKS: Block[] = [
 
 export default function Highlights() {
   return (
-    <section aria-label="Destaques do sistema" className="bg-surface py-20 sm:py-28">
-      <div className="container-x space-y-20 sm:space-y-28">
+    <section aria-label="Destaques do sistema" className="relative overflow-hidden bg-black py-20 md:py-28">
+      <div className="bg-noise pointer-events-none absolute inset-0 opacity-[0.15]" />
+      <div className="container-x relative space-y-20 sm:space-y-28">
         {BLOCKS.map((b, i) => (
           <article
             key={b.id}
@@ -236,15 +237,16 @@ export default function Highlights() {
             className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16"
           >
             <Reveal className={i % 2 === 1 ? 'lg:order-2' : ''}>
-              <span className="chip">{b.chip}</span>
-              <h2 id={`${b.id}-titulo`} className="mt-4 text-3xl font-extrabold leading-[1.1] tracking-tight sm:text-4xl">
+              <p className="label">{b.chip}</p>
+              <h2 id={`${b.id}-titulo`} className="mt-5 text-3xl font-normal leading-[1] sm:text-4xl lg:text-5xl"
+                style={{ color: '#E1E0CC' }}>
                 {b.title}
               </h2>
-              <p className="mt-4 text-lg leading-relaxed text-muted">{b.text}</p>
-              <ul className="mt-7 space-y-4 text-[15px] leading-relaxed">
+              <p className="mt-4 font-serif text-xl italic text-primary/70 sm:text-2xl">{b.text}</p>
+              <ul className="mt-7 space-y-4 text-sm leading-relaxed sm:text-[15px]">
                 {b.points.map((p) => (
-                  <CheckItem key={p.title} tone="green">
-                    <strong className="font-bold">{p.title}:</strong> <span className="text-muted">{p.text}</span>
+                  <CheckItem key={p.title}>
+                    <strong className="font-bold text-cream">{p.title}:</strong> {p.text}
                   </CheckItem>
                 ))}
               </ul>
