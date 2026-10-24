@@ -10,24 +10,16 @@ const ITEMS = [
 
 export default function Benefits() {
   return (
-    <section aria-label="Benefícios" className="container-x">
+    <section aria-label="Benefícios" className="container-x pt-4 md:pt-6">
       <Reveal>
-        <div className="grid gap-8 rounded-3xl bg-brand-gradient px-6 py-8 text-white sm:px-10 lg:grid-cols-[1.1fr_2fr] lg:items-center lg:gap-6">
-          <p className="text-lg leading-snug">
-            <strong className="font-extrabold">TellexApp</strong> é o sistema completo para assistências técnicas e lojas
-            que querem mais controle, agilidade e resultados.
-          </p>
-          <ul className="grid grid-cols-2 gap-5 sm:grid-cols-4 lg:border-l lg:border-white/20 lg:pl-6">
-            {ITEMS.map(({ icon: Icon, label }) => (
-              <li key={label} className="flex flex-col gap-3 sm:flex-row sm:items-center">
-                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-white/30 bg-white/10">
-                  <Icon className="h-6 w-6" aria-hidden="true" />
-                </span>
-                <span className="text-sm font-medium leading-tight">{label}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
+        <ul className="grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 lg:grid-cols-4">
+          {ITEMS.map(({ icon: Icon, label }) => (
+            <li key={label} className="flex items-center gap-3 bg-black px-4 py-5 sm:px-6">
+              <Icon className="h-5 w-5 shrink-0 text-primary" aria-hidden="true" />
+              <span className="text-xs text-primary/80 sm:text-sm">{label}</span>
+            </li>
+          ))}
+        </ul>
       </Reveal>
     </section>
   )

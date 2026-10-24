@@ -1,5 +1,5 @@
-import { ChevronDown } from 'lucide-react'
-import { Reveal, SectionHeading } from '../components/ui'
+import { Plus } from 'lucide-react'
+import { Reveal, SectionIntro } from '../components/ui'
 
 const FAQ = [
   {
@@ -30,28 +30,28 @@ const FAQ = [
 
 export default function Faq() {
   return (
-    <section id="duvidas" aria-labelledby="duvidas-titulo" className="bg-surface py-20 sm:py-28">
-      <div className="container-x grid gap-12 lg:grid-cols-[0.8fr_1.2fr]">
-        <Reveal>
-          <SectionHeading
-            chip="Dúvidas"
-            title={<span id="duvidas-titulo">Perguntas frequentes</span>}
-            text="Não encontrou o que procurava? Fale com a gente e agende uma demonstração."
-          />
-        </Reveal>
+    <section id="duvidas" aria-label="Dúvidas" className="bg-black px-4 py-20 sm:px-6 md:py-28">
+      <div className="mx-auto max-w-6xl rounded-2xl bg-card px-6 py-16 sm:px-10 md:rounded-[2rem] md:py-24">
+        <SectionIntro
+          label="Dúvidas"
+          lines={[[{ text: 'Perguntas' }, { text: 'frequentes.', className: 'italic font-serif' }]]}
+        />
 
-        <div className="space-y-3">
+        <div className="mx-auto mt-12 max-w-3xl border-t border-white/10">
           {FAQ.map((item, i) => (
             <Reveal key={item.q} delay={i * 0.04}>
-              <details className="group card px-6 py-1 [&_summary::-webkit-details-marker]:hidden">
-                <summary className="flex min-h-[60px] cursor-pointer list-none items-center justify-between gap-4 font-bold">
+              <details className="group border-b border-white/10 [&_summary::-webkit-details-marker]:hidden">
+                <summary
+                  className="flex min-h-[64px] cursor-pointer list-none items-center justify-between gap-4 text-base sm:text-lg"
+                  style={{ color: '#E1E0CC' }}
+                >
                   {item.q}
-                  <ChevronDown
-                    className="h-5 w-5 shrink-0 text-brand transition-transform duration-200 group-open:rotate-180"
+                  <Plus
+                    className="h-5 w-5 shrink-0 text-primary transition-transform duration-300 group-open:rotate-45"
                     aria-hidden="true"
                   />
                 </summary>
-                <p className="pb-5 text-[15px] leading-relaxed text-muted">{item.a}</p>
+                <p className="pb-6 text-sm leading-relaxed text-gray-400 sm:text-base">{item.a}</p>
               </details>
             </Reveal>
           ))}
