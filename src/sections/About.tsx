@@ -1,46 +1,42 @@
-import { useRef } from 'react'
-import { useScroll } from 'framer-motion'
-import WordsPullUpMultiStyle from '../components/WordsPullUpMultiStyle'
-import AnimatedLetter from '../components/AnimatedLetter'
-
-const BODY =
-  'Over the last seven years, I have worked with Parallax, a Berlin-based production house that crafts cinema, series, and Noir Studio in Paris. Together, we have created work that has earned international acclaim at several major festivals.'
+import { CheckItem, Reveal } from '../components/ui'
+import { img } from '../config'
 
 export default function About() {
-  const bodyRef = useRef<HTMLParagraphElement>(null)
-  const { scrollYProgress } = useScroll({ target: bodyRef, offset: ['start 0.8', 'end 0.2'] })
-  const chars = BODY.split('')
-
   return (
-    <section id="about" className="bg-black px-4 py-20 sm:px-6 md:py-28 lg:py-32">
-      <div className="mx-auto max-w-6xl rounded-2xl bg-[#101010] px-6 py-16 text-center sm:px-10 md:rounded-[2rem] md:py-24 lg:py-28">
-        <p className="mb-6 text-[10px] text-primary sm:mb-8 sm:text-xs">Visual arts</p>
+    <section id="sobre" aria-labelledby="sobre-titulo" className="container-x py-20 sm:py-28">
+      <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+        <Reveal className="relative order-2 lg:order-1">
+          <div className="relative mx-auto flex max-w-lg items-end justify-end overflow-hidden rounded-[2rem] border border-line bg-[#F9F9FB] pr-[6%] pt-8">
+            <img
+              src={img('pessoa.webp')}
+              alt="Mulher sorridente segurando um celular com o painel do TellexApp aberto"
+              width={214}
+              height={512}
+              loading="lazy"
+              className="relative w-[56%] max-w-[260px]"
+            />
+            <p className="absolute left-[6%] top-[38%] w-[36%] -rotate-6 font-hand text-xl leading-tight text-brand sm:text-2xl">
+              Acompanhe tudo em tempo real pelo painel ou no celular!
+            </p>
+          </div>
+        </Reveal>
 
-        <h2 style={{ color: '#E1E0CC' }}>
-          <WordsPullUpMultiStyle
-            className="mx-auto max-w-3xl text-3xl leading-[0.95] sm:text-4xl sm:leading-[0.9] md:text-5xl lg:text-6xl xl:text-7xl"
-            segments={[
-              { text: 'I am Marcus Chen,', className: 'font-normal' },
-              { text: 'a self-taught director.', className: 'italic font-serif' },
-              {
-                text: 'I have skills in color grading, visual effects, and narrative design.',
-                className: 'font-normal',
-              },
-            ]}
-          />
-        </h2>
-
-        <p
-          ref={bodyRef}
-          className="mx-auto mt-10 max-w-2xl text-xs leading-relaxed text-[#DEDBC8] sm:mt-14 sm:text-sm md:text-base"
-          aria-label={BODY}
-        >
-          <span aria-hidden="true">
-            {chars.map((char, i) => (
-              <AnimatedLetter key={i} char={char} index={i} total={chars.length} progress={scrollYProgress} />
-            ))}
-          </span>
-        </p>
+        <Reveal className="order-1 lg:order-2">
+          <span className="chip">Para assistências técnicas e lojas</span>
+          <h2 id="sobre-titulo" className="mt-4 text-3xl font-extrabold leading-[1.1] tracking-tight sm:text-4xl lg:text-[2.75rem]">
+            Gestão inteligente para o <span className="text-brand">crescimento da sua loja</span>
+          </h2>
+          <p className="mt-4 text-lg leading-relaxed text-muted">
+            Todas as ferramentas que você precisa para vender mais, organizar melhor e tomar decisões inteligentes. Com o
+            TellexApp, você ganha tempo, reduz erros e oferece uma experiência melhor para seus clientes.
+          </p>
+          <ul className="mt-7 space-y-3.5 text-[16px] font-medium">
+            <CheckItem>Emissão e controle de OS</CheckItem>
+            <CheckItem>Acompanhamento em tempo real</CheckItem>
+            <CheckItem>Gestão de estoque e financeiro</CheckItem>
+            <CheckItem>Histórico completo de clientes</CheckItem>
+          </ul>
+        </Reveal>
       </div>
     </section>
   )

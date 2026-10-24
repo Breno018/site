@@ -1,96 +1,81 @@
 import { motion } from 'framer-motion'
-import { ArrowRight } from 'lucide-react'
-import WordsPullUp from '../components/WordsPullUp'
+import { ArrowRight, PlayCircle, ShieldCheck } from 'lucide-react'
+import { img } from '../config'
 
-const HERO_VIDEO =
-  'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260405_170732_8a9ccda6-5cff-4628-b164-059c500a2b41.mp4'
+const EASE = [0.22, 1, 0.36, 1] as const
 
-const NAV_ITEMS = [
-  { label: 'Our story', href: '#about' },
-  { label: 'Collective', href: '#about' },
-  { label: 'Workshops', href: '#features' },
-  { label: 'Programs', href: '#features' },
-  { label: 'Inquiries', href: '#top' },
-]
-
-const EASE = [0.16, 1, 0.3, 1] as const
+const fade = (delay: number) => ({
+  initial: { opacity: 0, y: 24 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.7, delay, ease: EASE },
+})
 
 export default function Hero() {
   return (
-    <section id="top" className="h-screen p-4 md:p-6">
-      <div className="relative h-full w-full overflow-hidden rounded-2xl md:rounded-[2rem]">
-        <video
-          className="absolute inset-0 h-full w-full object-cover"
-          src={HERO_VIDEO}
-          autoPlay
-          loop
-          muted
-          playsInline
-          aria-hidden="true"
-        />
-        <div className="noise-overlay pointer-events-none absolute inset-0 opacity-[0.7] mix-blend-overlay" />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/60" />
+    <section
+      id="inicio"
+      className="relative overflow-hidden bg-gradient-to-b from-[#F3F6FF] to-white pb-16 pt-[calc(110px+env(safe-area-inset-top))] sm:pb-24 lg:pt-36"
+    >
+      <div className="container-x grid items-center gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-10">
+        <div>
+          <motion.p {...fade(0)} className="inline-flex items-center gap-2 rounded-full bg-brand-soft px-3.5 py-1.5 text-sm font-semibold text-brand">
+            <ShieldCheck className="h-4 w-4" aria-hidden="true" />
+            Sistema para vendas e assistência técnica
+          </motion.p>
 
-        <nav
-          aria-label="Main"
-          className="absolute left-1/2 top-0 z-20 -translate-x-1/2 rounded-b-2xl bg-black px-4 py-2 md:rounded-b-3xl md:px-8"
-        >
-          <ul className="flex items-center gap-3 whitespace-nowrap text-[10px] sm:gap-6 sm:text-xs md:gap-12 md:text-sm lg:gap-14">
-            {NAV_ITEMS.map((item) => (
-              <li key={item.label}>
-                <a
-                  href={item.href}
-                  className="transition-colors duration-200"
-                  style={{ color: 'rgba(225, 224, 204, 0.8)' }}
-                  onMouseEnter={(e) => (e.currentTarget.style.color = '#E1E0CC')}
-                  onMouseLeave={(e) => (e.currentTarget.style.color = 'rgba(225, 224, 204, 0.8)')}
-                >
-                  {item.label}
-                </a>
+          <motion.h1
+            {...fade(0.08)}
+            className="mt-6 text-[2.6rem] font-extrabold leading-[1.02] tracking-tight sm:text-6xl lg:text-[4.1rem]"
+          >
+            Mais controle, mais resultados <span className="text-brand">para sua loja.</span>
+          </motion.h1>
+
+          <motion.p {...fade(0.16)} className="mt-6 max-w-xl text-lg leading-relaxed text-muted">
+            O sistema de gestão feito para quem vende e conserta celulares. Estoque individual por IMEI, ordens de
+            serviço com vistoria na entrada e caixa organizado no fim do dia. Sem complicações.
+          </motion.p>
+
+          <motion.div {...fade(0.24)} className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <a href="#contato" className="btn-primary">
+              Comece agora <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </a>
+            <a href="#como-funciona" className="btn-outline">
+              <PlayCircle className="h-5 w-5 text-brand" aria-hidden="true" /> Ver demonstração
+            </a>
+          </motion.div>
+
+          <motion.ul {...fade(0.32)} className="mt-8 flex flex-wrap gap-x-6 gap-y-3 text-[15px] font-medium">
+            {['Simples e intuitivo', 'Completo e integrado', 'Feito para sua loja'].map((t) => (
+              <li key={t} className="flex items-center gap-2">
+                <span className="flex h-5 w-5 items-center justify-center rounded-full bg-brand text-white">
+                  <svg viewBox="0 0 12 12" className="h-3 w-3" aria-hidden="true">
+                    <path d="M2.5 6.2l2.2 2.2L9.5 3.8" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </span>
+                {t}
               </li>
             ))}
-          </ul>
-        </nav>
-
-        <div className="absolute bottom-0 left-0 right-0 z-10 grid grid-cols-12 items-end gap-4 px-4 pb-4 sm:px-6 sm:pb-6 md:px-8 md:pb-8">
-          <div className="col-span-12 lg:col-span-8">
-            <h1 className="sr-only">Prisma</h1>
-            <div aria-hidden="true">
-              <WordsPullUp
-                text="Prisma"
-                showAsterisk
-                className="text-[26vw] font-medium leading-[0.85] tracking-[-0.07em] sm:text-[24vw] md:text-[22vw] lg:text-[20vw] xl:text-[19vw] 2xl:text-[20vw]"
-                style={{ color: '#E1E0CC' }}
-              />
-            </div>
-          </div>
-
-          <div className="col-span-12 flex flex-col items-start gap-5 pb-2 lg:col-span-4 lg:pb-[2vw]">
-            <motion.p
-              className="max-w-md text-xs text-primary/70 sm:text-sm md:text-base"
-              style={{ lineHeight: 1.2 }}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.5, ease: EASE }}
-            >
-              Prisma is a worldwide network of visual artists, filmmakers and storytellers bound not by place, status or
-              labels but by passion and hunger to unlock potential through our unique perspectives.
-            </motion.p>
-
-            <motion.a
-              href="#about"
-              className="group inline-flex items-center gap-2 rounded-full bg-primary py-1.5 pl-5 pr-1.5 text-sm font-medium text-black transition-all duration-300 hover:gap-3 sm:text-base"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.7, ease: EASE }}
-            >
-              Join the lab
-              <span className="flex h-9 w-9 items-center justify-center rounded-full bg-black transition-transform duration-300 group-hover:scale-110 sm:h-10 sm:w-10">
-                <ArrowRight className="h-4 w-4 text-primary" aria-hidden="true" />
-              </span>
-            </motion.a>
-          </div>
+          </motion.ul>
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 30, scale: 0.98 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 0.9, delay: 0.2, ease: EASE }}
+          className="relative"
+        >
+          <div
+            className="absolute -right-24 -top-16 h-[120%] w-[90%] rounded-[45%_55%_40%_60%] bg-brand-gradient opacity-[0.14] blur-2xl"
+            aria-hidden="true"
+          />
+          <img
+            src={img('dashboard.webp')}
+            alt="Painel do TellexApp com resumo de vendas, faturamento, lucro líquido e atalhos para nova venda e novo conserto"
+            width={976}
+            height={780}
+            className="relative w-full rounded-2xl border border-line shadow-[0_40px_80px_-30px_rgba(31,69,224,.35)]"
+          />
+        </motion.div>
       </div>
     </section>
   )
