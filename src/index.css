@@ -20,11 +20,11 @@ html {
 
 html,
 body {
-  background: #000000;
+  background: #05060f;
 }
 
 body {
-  color: #e1e0cc;
+  color: #e9ebf8;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
@@ -36,7 +36,7 @@ body {
 }
 
 :focus-visible {
-  outline: 2px solid #dedbc8;
+  outline: 2px solid #8fa8ff;
   outline-offset: 3px;
   border-radius: 8px;
 }
@@ -66,10 +66,10 @@ body {
 
   /* Botão pílula creme com círculo preto e seta (estilo "Join the lab") */
   .pill-cta {
-    @apply inline-flex items-center gap-2 rounded-full bg-primary py-1.5 pl-5 pr-1.5 text-sm font-medium text-black transition-all duration-300 hover:gap-3 sm:text-base;
+    @apply inline-flex items-center gap-2 rounded-full bg-brand-gradient py-1.5 pl-5 pr-1.5 text-sm font-medium text-white shadow-[0_10px_30px_-10px_rgba(47,91,255,.7)] transition-all duration-300 hover:gap-3 hover:shadow-[0_14px_36px_-8px_rgba(93,48,233,.8)] sm:text-base;
   }
   .pill-cta-circle {
-    @apply flex h-9 w-9 items-center justify-center rounded-full bg-black transition-transform duration-300 group-hover:scale-110 sm:h-10 sm:w-10;
+    @apply flex h-9 w-9 items-center justify-center rounded-full bg-ink transition-transform duration-300 group-hover:scale-110 sm:h-10 sm:w-10;
   }
 
   .label {

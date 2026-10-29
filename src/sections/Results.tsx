@@ -1,15 +1,16 @@
 import { CardIn, CheckItem, SectionIntro } from '../components/ui'
 import WordsPullUp from '../components/WordsPullUp'
+import { COLORS } from '../theme'
 
 export default function Results() {
   return (
-    <section aria-label="Resultados" className="bg-black px-4 py-20 sm:px-6 md:py-28">
+    <section aria-label="Resultados" className="bg-ink px-4 py-20 sm:px-6 md:py-28">
       <div className="mx-auto max-w-6xl">
         <SectionIntro
           label="Impacto na rotina"
           lines={[
             [{ text: 'Resultados reais observados' }],
-            [{ text: 'pelos nossos clientes.', className: 'italic font-serif text-primary/60' }],
+            [{ text: 'pelos nossos clientes.', className: 'italic font-serif text-brand-soft' }],
           ]}
         />
 
@@ -17,27 +18,25 @@ export default function Results() {
           <CardIn className="rounded-2xl bg-card p-8 sm:p-10">
             <WordsPullUp
               text="-90%"
-              className="text-7xl font-medium leading-none tracking-[-0.05em] sm:text-8xl"
-              style={{ color: '#E1E0CC' }}
+              className="pb-2 text-7xl font-medium leading-none tracking-[-0.05em] text-transparent sm:text-8xl [&_*]:bg-gradient-to-r [&_*]:from-ok [&_*]:to-primary [&_*]:bg-clip-text"
             />
-            <p className="mt-6 text-lg" style={{ color: '#E1E0CC' }}>
+            <p className="mt-6 text-lg" style={{ color: COLORS.title }}>
               Divergências no estoque
             </p>
-            <p className="mt-1 text-sm text-gray-500">Devido ao controle obrigatório por IMEI.</p>
+            <p className="mt-1 text-sm text-dim">Devido ao controle obrigatório por IMEI.</p>
           </CardIn>
           <CardIn index={1} className="rounded-2xl bg-card p-8 sm:p-10">
             <WordsPullUp
               text="100%"
-              className="text-7xl font-medium leading-none tracking-[-0.05em] sm:text-8xl"
-              style={{ color: '#E1E0CC' }}
+              className="pb-2 text-7xl font-medium leading-none tracking-[-0.05em] text-transparent sm:text-8xl [&_*]:bg-gradient-to-r [&_*]:from-brand-soft [&_*]:to-brand-violet [&_*]:bg-clip-text"
             />
-            <p className="mt-6 text-lg" style={{ color: '#E1E0CC' }}>
+            <p className="mt-6 text-lg" style={{ color: COLORS.title }}>
               Blindagem em ordens de serviço
             </p>
-            <p className="mt-1 text-sm text-gray-500">Com o checklist 8P impresso e assinado.</p>
+            <p className="mt-1 text-sm text-dim">Com o checklist 8P impresso e assinado.</p>
           </CardIn>
           <CardIn index={2} className="rounded-2xl bg-panel p-8 sm:p-10 md:col-span-2">
-            <h3 className="text-lg" style={{ color: '#E1E0CC' }}>
+            <h3 className="text-lg" style={{ color: COLORS.title }}>
               O que muda na prática para o dono da loja
             </h3>
             <ul className="mt-6 grid gap-4 text-sm md:grid-cols-3">

@@ -12,9 +12,9 @@ export default function Benefits() {
   return (
     <section aria-label="Benefícios" className="container-x pt-4 md:pt-6">
       <Reveal>
-        <ul className="grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 lg:grid-cols-4">
+        <ul className="grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-primary/10 bg-primary/10 lg:grid-cols-4">
           {ITEMS.map(({ icon: Icon, label }) => (
-            <li key={label} className="flex items-center gap-3 bg-black px-4 py-5 sm:px-6">
+            <li key={label} className="flex items-center gap-3 bg-ink px-4 py-5 sm:px-6">
               <Icon className="h-5 w-5 shrink-0 text-primary" aria-hidden="true" />
               <span className="text-xs text-primary/80 sm:text-sm">{label}</span>
             </li>
